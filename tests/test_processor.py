@@ -4,7 +4,7 @@ from src.processor import process_records
 def test_process_records_filters_invalid():
     data = [
         {"id": 1, "value": 10},
-        {"id": 2, "value": "bad"},  # invalid
+        {"id": 2, "value": "bad"},
         {"id": 3, "value": 5}
     ]
 

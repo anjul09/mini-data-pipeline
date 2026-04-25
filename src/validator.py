@@ -3,8 +3,8 @@ def validate_record(record: dict) -> bool:
     For now we just check:
     - 'id' exists
     - 'value' exists and is numeric
-
     This can be expanded later if needed."""
+    
     if not isinstance(record, dict):
         return False
 
