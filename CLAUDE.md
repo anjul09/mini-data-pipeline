@@ -22,6 +22,7 @@ No external dependencies beyond pytest. Keep it simple.
 - Run tests after making changes: `pytest`
 - Prefer running a single test file while iterating
 - Do not assume behavior — verify with tests
+- Run `ruff check .` before finalizing changes
 
 
 ## Do Not
