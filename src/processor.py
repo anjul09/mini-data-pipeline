@@ -1,20 +1,20 @@
-from src.validator import validate_record
+from src.validator import is_valid_record
+from src.transformer import transform_record
+from src.config import ENABLE_STRICT_VALIDATION
 
-def process_records(records: list[dict]) -> list[dict]:
-    """Takes a list of records, filters out invalid ones,
-    and applies a simple transformation.Right now the transformation 
-    is just doubling the value."""
+def process_records(records):
+    """Processes a list of records.
+    Current behavior:
+    - invalid records are silently skipped (unless strict mode is enabled)"""
     processed = []
 
     for record in records:
-        if not validate_record(record):
+        if not is_valid_record(record):
+            if ENABLE_STRICT_VALIDATION:
+                raise ValueError(f"Invalid record: {record}")
             continue
 
-        transformed = {
-            "id": record["id"],
-            "processed_value": record["value"] * 2
-        }
-
+        transformed = transform_record(record)
         processed.append(transformed)
 
     return processed

@@ -1,9 +1,7 @@
-def validate_record(record: dict) -> bool:
-    """ Very basic validation for incoming records.
-    For now we just check:
-    - 'id' exists
-    - 'value' exists and is numeric
-    This can be expanded later if needed."""
+def is_valid_record(record):
+    """Basic validation:
+    - must have 'id' and 'value'
+    - value must be int or float"""
     
     if not isinstance(record, dict):
         return False
@@ -11,9 +9,7 @@ def validate_record(record: dict) -> bool:
     if "id" not in record or "value" not in record:
         return False
 
-    value = record["value"]
-
-    if not isinstance(value, (int, float)):
+    if not isinstance(record["value"], (int, float)):
         return False
 
     return True
